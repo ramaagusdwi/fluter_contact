@@ -81,7 +81,7 @@ class _ContactListTileState extends State<ContactListTile> {
             color: _isFavorite
                 ? FlutterContactsTheme.primaryColor
                 : FlutterContactsTheme.greyColor,
-            size: 36.0,
+            size: 26.0,
           ),
         ),
       ),
