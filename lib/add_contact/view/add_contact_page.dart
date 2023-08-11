@@ -107,25 +107,46 @@ class AddContactView extends StatelessWidget {
       //       ? const CupertinoActivityIndicator()
       //       : const Icon(Icons.check_rounded),
       // ),
-      body: const CupertinoScrollbar(
+      body: CupertinoScrollbar(
         child: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.all(16),
             child: Column(
               children: [
-                _FirstNameField(),
-                SizedBox(height: 12),
-                _LastNameField(),
-                SizedBox(height: 12),
-                _WorkField(),
-                SizedBox(height: 12),
-                _PhoneField(),
-                SizedBox(height: 12),
-                _EmailField(),
-                SizedBox(height: 12),
-                _WebsiteField(),
+                const SizedBox(height: 24),
+                _Photo(),
+                const SizedBox(height: 12),
+                const _FirstNameField(),
+                const SizedBox(height: 12),
+                const _LastNameField(),
+                const SizedBox(height: 12),
+                const _WorkField(),
+                const SizedBox(height: 12),
+                const _PhoneField(),
+                const SizedBox(height: 12),
+                const _EmailField(),
+                const SizedBox(height: 12),
+                const _WebsiteField(),
               ],
             ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  SizedBox _Photo() {
+    return SizedBox(
+      width: 130,
+      height: 130,
+      child: FittedBox(
+        child: FloatingActionButton(
+          backgroundColor: FlutterContactsTheme.primaryColor,
+          onPressed: () {},
+          child: const Icon(
+            Icons.photo_camera,
+            size: 13,
+            color: Colors.white,
           ),
         ),
       ),
