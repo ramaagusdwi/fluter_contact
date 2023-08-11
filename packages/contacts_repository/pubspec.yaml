@@ -1,0 +1,20 @@
+name: contacts_repository
+description: A repository that handles contact related requests.
+version: 0.0.1
+publish_to: none
+
+environment:
+  sdk: '>=3.0.5 <4.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  contact_api:
+    path: ../contact_api
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
