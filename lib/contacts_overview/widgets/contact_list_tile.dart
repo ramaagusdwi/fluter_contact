@@ -56,20 +56,12 @@ class _ContactListTileState extends State<ContactListTile> {
           maxLines: 1,
           style: AppTextStyle.textMuted14SemiBold,
         ),
-        // leading: Checkbox(
-        //   shape: const ContinuousRectangleBorder(
-        //     borderRadius: BorderRadius.all(Radius.circular(8)),
-        //   ),
-        //   value: contact.isFavorite,
-        //   onChanged: onToggleCompleted == null
-        //       ? null
-        //       : (value) => onToggleCompleted!(value!),
-        // ),
+
         leading: _NameIcon(
             firstName: widget.contact.firstName,
             backgroundColor: FlutterContactsTheme.primaryColor,
             textColor: FlutterContactsTheme.iconNameTextColor),
-        // trailing: onTap == null ? null : const Icon(Icons.chevron_right),
+    
         trailing: InkWell(
           onTap: () {
             setState(() {
