@@ -129,13 +129,11 @@ class _TitleFieldState extends State<_TitleField> {
 
   @override
   Widget build(BuildContext context) {
-    // final l10n = context.l10n;
     final state = context.watch<AddContactBloc>().state;
-    // final hintText = state.initialTodo?.title ?? '';
 
      
     return TextFormField(
-      key: const Key('AddContactView_title_textFormField'),
+      key: const Key('AddContactView_firstName_textFormField'),
       focusNode: focusNode,
       initialValue: state.title,
       decoration: InputDecoration(
@@ -166,24 +164,43 @@ class _TitleFieldState extends State<_TitleField> {
   }
 }
 
-class _LastNameField extends StatelessWidget {
+class _LastNameField extends StatefulWidget {
   const _LastNameField();
 
   @override
+  State<_LastNameField> createState() => _LastNameFieldState();
+}
+
+class _LastNameFieldState extends State<_LastNameField> {
+  FocusNode focusNode = FocusNode();
+  String hintText = 'Nama Belakang';
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    focusNode.addListener(() {
+      if (focusNode.hasFocus) {
+        hintText = '';
+      } else {
+        hintText = 'Nama Belakang';
+      }
+      setState(() {});
+    });
+  }
+
+  
+  @override
   Widget build(BuildContext context) {
-    // final l10n = context.l10n;
     final state = context.watch<AddContactBloc>().state;
-    // final hintText = state.initialTodo?.title ?? '';
 
     return TextFormField(
-      key: const Key('AddContactView_title_textFormField'),
+      key: const Key('AddContactView_lastName_textFormField'),
       initialValue: state.title,
       decoration: InputDecoration(
         enabled: !state.status.isLoadingOrSuccess,
         labelText: 'Nama Belakang',
-        hintText: 'Nama Belakang',
+        hintText: hintText,
       ),
-      maxLength: 50,
       inputFormatters: [
         LengthLimitingTextInputFormatter(50),
         FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9\s]')),

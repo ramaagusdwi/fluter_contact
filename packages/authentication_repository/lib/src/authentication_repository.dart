@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:authentication_repository/src/dio_client.dart';
 import 'package:authentication_repository/src/models/user.dart';
+import 'package:flutter/foundation.dart';
 
 enum AuthenticationStatus { unknown, authenticated, unauthenticated }
 
@@ -20,6 +21,7 @@ class AuthenticationRepository {
   }) async {
     final DioClient client = DioClient();
     String? token = await client.login(email: email, password: password);
+    debugPrint('token: $token');
     if (token != null) {
       await Future.delayed(
         const Duration(milliseconds: 300),
