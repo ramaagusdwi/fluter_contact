@@ -34,6 +34,16 @@ class TodosOverviewView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Contact'),
+        actions: [
+          const Padding(
+            padding: EdgeInsets.only(right: 16),
+            child: Icon(
+              Icons.search,
+              color: Colors.white,
+              size: 30.0,
+            ),
+          ),
+        ],
       ),
       body: MultiBlocListener(
         listeners: [
