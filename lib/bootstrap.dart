@@ -18,8 +18,11 @@ void bootstrap({required ContactsApi contactsApi}) {
 
   final contactsRepository = ContactsRepository(contactApi: contactsApi);
 
-  runZonedGuarded(
-    () => runApp(App(contactsRepository: contactsRepository)),
-    (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
-  );
+  // runZonedGuarded(
+  //   () {
+  //     runApp(App(contactsRepository: contactsRepository));
+  //   },
+  //   (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
+  // );
+  runApp(App(contactsRepository: contactsRepository));
 }
