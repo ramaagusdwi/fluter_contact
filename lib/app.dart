@@ -64,6 +64,7 @@ class _AppViewState extends State<AppView> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: FlutterContactsTheme.light,
       darkTheme: FlutterContactsTheme.dark,
       navigatorKey: _navigatorKey,
