@@ -114,11 +114,21 @@ class AddContactBloc extends Bloc<AddContactEvent, AddContactState> {
       final contactState = state.copyWith(
         firstName: state.firstName,
         lastName: state.lastName,
+        phone: state.phone,
+        email: state.email,
+        website: state.website,
+        work: state.work,
       );
 
       try {
         await _contactsRepository.saveContactModel(ContactModel(
-            title: contactState.firstName, description: contactState.lastName));
+          firstName: contactState.firstName,
+          lastName: contactState.lastName,
+          phone: state.phone,
+          email: state.email,
+          work: state.work,
+          website: state.website,
+        ));
         emit(state.copyWith(status: AddContactStatus.success));
       } catch (e) {
         emit(state.copyWith(

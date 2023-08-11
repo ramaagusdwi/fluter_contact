@@ -26,9 +26,13 @@ part 'contact_model.g.dart';
 class ContactModel extends Equatable {
   /// {@macro contact_item}
   ContactModel({
-    required this.title,
+    required this.firstName,
+    required this.email,
+    required this.phone,
     String? id,
-    this.description = '',
+    this.lastName = '',
+    this.work = '',
+    this.website = '',
     this.isFavorite = false,
   })  : assert(
           id == null || id.isNotEmpty,
@@ -43,13 +47,16 @@ class ContactModel extends Equatable {
 
   /// The title of the `contact`.
   ///
-  /// Note that the title may be empty.
-  final String title;
+  /// Note that the firstname , phone, email not be empty (mandatory)
+  final String firstName;
+  final String phone;
+  final String email;
 
-  /// The description of the `contact`.
-  ///
-  /// Defaults to an empty string.
-  final String description;
+  //optional
+  //Default empty string
+  final String work;
+  final String website;
+  final String lastName;
 
   /// Whether the `contact` is completed.
   ///
@@ -61,15 +68,21 @@ class ContactModel extends Equatable {
   /// {@macro contact_item}
   ContactModel copyWith({
     String? id,
-    String? title,
-    String? description,
+    String? firstName,
+    String? lastName,
+    String? phone,
+    String? email,
+    String? website,
+    String? work,
     bool? isFavorite,
   }) {
     return ContactModel(
       id: id ?? this.id,
-      title: title ?? this.title,
-      description: description ?? this.description,
+      firstName: firstName ?? this.firstName,
+      lastName: lastName ?? this.lastName,
       isFavorite: isFavorite ?? this.isFavorite,
+      phone: phone ?? this.phone,
+      email: email ?? this.email,
     );
   }
 
@@ -80,5 +93,5 @@ class ContactModel extends Equatable {
   JsonMap toJson() => _$ContactModelToJson(this);
 
   @override
-  List<Object> get props => [id, title, description, isFavorite];
+  List<Object> get props => [id, firstName, lastName, phone, isFavorite];
 }

@@ -7,16 +7,24 @@ part of 'contact_model.dart';
 // **************************************************************************
 
 ContactModel _$ContactModelFromJson(Map<String, dynamic> json) => ContactModel(
-      title: json['title'] as String,
+      firstName: json['firstName'] as String,
+      email: json['email'] as String,
+      phone: json['phone'] as String,
       id: json['id'] as String?,
-      description: json['description'] as String? ?? '',
+      lastName: json['lastName'] as String? ?? '',
+      work: json['work'] as String? ?? '',
+      website: json['website'] as String? ?? '',
       isFavorite: json['isFavorite'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$ContactModelToJson(ContactModel instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'title': instance.title,
-      'description': instance.description,
+      'firstName': instance.firstName,
+      'phone': instance.phone,
+      'email': instance.email,
+      'work': instance.work,
+      'website': instance.website,
+      'lastName': instance.lastName,
       'isFavorite': instance.isFavorite,
     };
