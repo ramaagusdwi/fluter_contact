@@ -2,6 +2,7 @@ import 'package:contacts_repository/contacts_repository.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_contact/add_contact/view/add_contact_page.dart';
 import '../bloc/contacts_overview_bloc.dart';
 import '../widgets/widgets.dart';
 
@@ -108,6 +109,16 @@ class TodosOverviewView extends StatelessWidget {
           },
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // Add your onPressed code here!
+          Navigator.of(context).push(
+            AddContactPage.route(),
+          );
+        },
+        child: const Icon(Icons.add),
+      ),
+    
     );
   }
 }

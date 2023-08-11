@@ -13,6 +13,12 @@ class FlutterContactsTheme {
       snackBarTheme: const SnackBarThemeData(
         behavior: SnackBarBehavior.floating,
       ),
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
+        backgroundColor: const Color(0xFF3F51B5),
+        foregroundColor: Colors.white,
+        hoverColor: Colors.redAccent,
+        splashColor: Colors.tealAccent,
+      ),
     );
   }
 
