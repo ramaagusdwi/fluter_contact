@@ -28,7 +28,7 @@ class ContactsOverviewBloc
       _contactsRepository.getContacts(),
       onData: (todos) => state.copyWith(
         status: () => ContactsOverviewStatus.success,
-        todos: () => todos,
+        contacts: () => todos,
       ),
       onError: (_, __) => state.copyWith(
         status: () => ContactsOverviewStatus.failure,

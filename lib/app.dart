@@ -8,6 +8,8 @@ import 'package:flutter_contact/login/view/login_page.dart';
 import 'package:flutter_contact/splash/view/splash_page.dart';
 import 'package:flutter_contact/theme/theme.dart';
 
+import 'contacts_overview/view/contacts_overview_page.dart';
+
 class App extends StatefulWidget {
   const App({required this.contactsRepository, super.key});
 
@@ -73,7 +75,7 @@ class _AppViewState extends State<AppView> {
             switch (state.status) {
               case AuthenticationStatus.authenticated:
                 _navigator.pushAndRemoveUntil<void>(
-                  HomePage.route(),
+                  ContactsOverviewPage.route(),
                   (route) => false,
                 );
               case AuthenticationStatus.unauthenticated:
