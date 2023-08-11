@@ -47,7 +47,7 @@ class ContactListTile extends StatelessWidget {
               : AppTextStyle.textBody14Bold
         ),
         subtitle: Text(
-          contact.phone,
+          contact.phone.toFormatPhoneIndo(),
           maxLines: 1,
           style: AppTextStyle.textMuted14SemiBold,
          
