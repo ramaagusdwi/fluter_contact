@@ -425,7 +425,7 @@ class _PhoneFieldState extends State<_PhoneField> {
         hintText: hintText,
         hintStyle: AppTextStyle.textMuted12,
       ),
-      maxLength: 16,
+      maxLength: 12,
       keyboardType: TextInputType.number,
       inputFormatters: [FilteringTextInputFormatter.digitsOnly],
       onChanged: (value) {
