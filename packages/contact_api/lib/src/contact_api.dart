@@ -33,6 +33,8 @@ abstract class ContactsApi {
   // Future<int> completeAll({required bool isCompleted});
 
   Future<void> favorite({required String id});
+
+  ContactModel getContact({required String id});
 }
 
 /// Error thrown when a [Contact] with a given id is not found.
