@@ -1,14 +1,17 @@
 import 'package:authentication_repository/authentication_repository.dart';
+import 'package:contacts_repository/contacts_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_contact/authentication/bloc/authentication_bloc.dart';
 import 'package:flutter_contact/home/view/home_page.dart';
 import 'package:flutter_contact/login/view/login_page.dart';
 import 'package:flutter_contact/splash/view/splash_page.dart';
-
+import 'package:flutter_contact/theme/theme.dart';
 
 class App extends StatefulWidget {
-  const App({super.key});
+  const App({required this.contactsRepository, super.key});
+
+  final ContactsRepository contactsRepository;
 
   @override
   State<App> createState() => _AppState();
@@ -30,8 +33,11 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider.value(
-      value: _authenticationRepository,
+    return MultiRepositoryProvider(
+      providers: [
+        RepositoryProvider.value(value: _authenticationRepository),
+        RepositoryProvider.value(value: widget.contactsRepository),
+      ],
       child: BlocProvider(
         create: (_) => AuthenticationBloc(
           authenticationRepository: _authenticationRepository,
@@ -57,6 +63,8 @@ class _AppViewState extends State<AppView> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: FlutterContactsTheme.light,
+      darkTheme: FlutterContactsTheme.dark,
       navigatorKey: _navigatorKey,
       builder: (context, child) {
         // return SizedBox.shrink();
@@ -79,7 +87,6 @@ class _AppViewState extends State<AppView> {
           },
           child: child,
         );
-        
       },
       onGenerateRoute: (_) => SplashPage.route(),
     );
