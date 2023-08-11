@@ -113,7 +113,7 @@ class AddContactView extends StatelessWidget {
             padding: EdgeInsets.all(16),
             child: Column(
               children: [
-                _TitleField(),
+                _FirstNameField(),
                 SizedBox(height: 12),
                 _LastNameField(),
                 SizedBox(height: 12),
@@ -133,14 +133,14 @@ class AddContactView extends StatelessWidget {
   }
 }
 
-class _TitleField extends StatefulWidget {
-  const _TitleField();
+class _FirstNameField extends StatefulWidget {
+  const _FirstNameField();
 
   @override
-  State<_TitleField> createState() => _TitleFieldState();
+  State<_FirstNameField> createState() => _FirstNameFieldState();
 }
 
-class _TitleFieldState extends State<_TitleField> {
+class _FirstNameFieldState extends State<_FirstNameField> {
   FocusNode focusNode = FocusNode();
   String hintText = 'Nama Depan';
   @override
@@ -164,6 +164,7 @@ class _TitleFieldState extends State<_TitleField> {
     return TextFormField(
       key: const Key('AddContactView_firstName_textFormField'),
       focusNode: focusNode,
+      autovalidateMode: AutovalidateMode.always,
       initialValue: state.firstName,
       decoration: InputDecoration(
         icon: Align(
@@ -199,7 +200,14 @@ class _TitleFieldState extends State<_TitleField> {
         FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9\s]')),
       ],
       onChanged: (value) {
-        context.read<AddContactBloc>().add(AddContactTitleChanged(value));
+        context.read<AddContactBloc>().add(AddContactFirstNameChanged(value));
+      },
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Nama depan wajib diisi';
+        }
+
+        return null;
       },
     );
   }
@@ -239,7 +247,7 @@ class _LastNameFieldState extends State<_LastNameField> {
     return TextFormField(
       focusNode: focusNode,
       key: const Key('AddContactView_lastName_textFormField'),
-      initialValue: state.firstName,
+      initialValue: state.lastName,
       decoration: InputDecoration(
         icon: Align(
           widthFactor: 0.5,
@@ -266,7 +274,7 @@ class _LastNameFieldState extends State<_LastNameField> {
         FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9\s]')),
       ],
       onChanged: (value) {
-        context.read<AddContactBloc>().add(AddContactDescriptionChanged(value));
+        context.read<AddContactBloc>().add(AddContactLastNameChanged(value));
       },
     );
   }
@@ -306,7 +314,7 @@ class _WorkFieldState extends State<_WorkField> {
     return TextFormField(
       focusNode: focusNode,
       key: const Key('AddContactView_work_textFormField'),
-      initialValue: state.firstName,
+      initialValue: state.email,
       decoration: InputDecoration(
         icon: Align(
           widthFactor: 0.5,
@@ -372,8 +380,9 @@ class _PhoneFieldState extends State<_PhoneField> {
 
     return TextFormField(
       focusNode: focusNode,
+      autovalidateMode: AutovalidateMode.always,
       key: const Key('AddContactView_work_textFormField'),
-      initialValue: state.firstName,
+      initialValue: state.phone,
       decoration: InputDecoration(
         icon: Align(
           widthFactor: 0.5,
@@ -400,6 +409,17 @@ class _PhoneFieldState extends State<_PhoneField> {
       inputFormatters: [FilteringTextInputFormatter.digitsOnly],
       onChanged: (value) {
         context.read<AddContactBloc>().add(AddContactPhoneChanged(value));
+      },
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Telpon wajib diisi';
+        }
+
+        if (value.isNotEmpty && value.length < 12) {
+          return 'Telpon minimal 12 digit';
+        }
+
+        return null;
       },
     );
   }
@@ -438,8 +458,9 @@ class _EmailFieldState extends State<_EmailField> {
 
     return TextFormField(
       focusNode: focusNode,
+      autovalidateMode: AutovalidateMode.always,
       key: const Key('AddContactView_email_textFormField'),
-      initialValue: state.firstName,
+      initialValue: state.email,
       decoration: InputDecoration(
         icon: Align(
           widthFactor: 0.5,
@@ -461,10 +482,6 @@ class _EmailFieldState extends State<_EmailField> {
         hintText: hintText,
         hintStyle: AppTextStyle.textMuted12,
       ),
-      inputFormatters: [
-        LengthLimitingTextInputFormatter(50),
-        FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9\s]')),
-      ],
       onChanged: (value) {
         context.read<AddContactBloc>().add(AddContactEmailChanged(value));
       },

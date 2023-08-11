@@ -7,22 +7,22 @@ sealed class AddContactEvent extends Equatable {
   List<Object> get props => [];
 }
 
-final class AddContactTitleChanged extends AddContactEvent {
-  const AddContactTitleChanged(this.title);
+final class AddContactFirstNameChanged extends AddContactEvent {
+  const AddContactFirstNameChanged(this.firstName);
 
-  final String title;
+  final String firstName;
 
   @override
-  List<Object> get props => [title];
+  List<Object> get props => [firstName];
 }
 
-final class AddContactDescriptionChanged extends AddContactEvent {
-  const AddContactDescriptionChanged(this.description);
+final class AddContactLastNameChanged extends AddContactEvent {
+  const AddContactLastNameChanged(this.lastName);
 
-  final String description;
+  final String lastName;
 
   @override
-  List<Object> get props => [description];
+  List<Object> get props => [lastName];
 }
 
 final class AddContactWorkChanged extends AddContactEvent {
@@ -44,12 +44,12 @@ final class AddContactPhoneChanged extends AddContactEvent {
 }
 
 final class AddContactEmailChanged extends AddContactEvent {
-  const AddContactEmailChanged(this.contact);
+  const AddContactEmailChanged(this.email);
 
-  final String contact;
+  final String email;
 
   @override
-  List<Object> get props => [contact];
+  List<Object> get props => [email];
 }
 
 final class AddContactWebsiteChanged extends AddContactEvent {

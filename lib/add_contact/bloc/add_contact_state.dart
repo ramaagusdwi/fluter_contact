@@ -20,14 +20,21 @@ final class AddContactState extends Equatable {
     this.email = '',
     this.phone = '',
     this.errMessage = '',
+    this.work = '',
+    this.website = '',
   });
 
   final AddContactStatus status;
   final String firstName;
-  final String lastName;
+
   final String email;
   final String phone;
   final String errMessage;
+
+  //optional
+  final String work;
+  final String lastName;
+  final String website;
 
   AddContactState copyWith({
     AddContactStatus? status,
@@ -36,6 +43,8 @@ final class AddContactState extends Equatable {
     String? email,
     String? phone,
     String? errorMessage,
+    String? work,
+    String? website,
   }) {
     return AddContactState(
       status: status ?? this.status,
@@ -44,10 +53,12 @@ final class AddContactState extends Equatable {
       email: email ?? this.email,
       phone: phone ?? this.phone,
       errMessage: errorMessage ?? this.errMessage,
+        work: work ?? this.work,
+        website: website ?? this.website
     );
   }
 
   @override
   List<Object?> get props =>
-      [status, firstName, lastName, email, phone, errMessage];
+      [status, firstName, lastName, email, phone, errMessage, work, website];
 }
