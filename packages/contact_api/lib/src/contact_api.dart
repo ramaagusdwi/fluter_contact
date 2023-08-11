@@ -1,6 +1,4 @@
 
-
-
 import 'package:contact_api/src/models/contact_model.dart';
 
 /// {@template Contacts_api}
@@ -24,15 +22,15 @@ abstract class ContactsApi {
   /// thrown.
   Future<void> deleteContact(String id);
 
-  /// Deletes all completed Contacts.
-  ///
-  /// Returns the number of deleted Contacts.
-  Future<int> clearCompleted();
+  // /// Deletes all completed Contacts.
+  // ///
+  // /// Returns the number of deleted Contacts.
+  // Future<int> clearCompleted();
 
-  /// Sets the `isCompleted` state of all Contacts to the given value.
-  ///
-  /// Returns the number of updated Contacts.
-  Future<int> completeAll({required bool isCompleted});
+  // /// Sets the `isCompleted` state of all Contacts to the given value.
+  // ///
+  // /// Returns the number of updated Contacts.
+  // Future<int> completeAll({required bool isCompleted});
 
   Future<int> favorite({required bool isFavorite, required String id});
 }

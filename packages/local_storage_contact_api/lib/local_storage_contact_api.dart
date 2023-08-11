@@ -1,7 +1,7 @@
-library local_storage_contact_api;
+/// A Flutter implementation of the TodosApi that uses local storage.
+library local_storage_contacts_api;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'package:shared_preferences/shared_preferences.dart'
+    show SharedPreferences;
+
+export 'src/local_storage_contact_api.dart';
