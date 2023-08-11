@@ -65,7 +65,12 @@ class ContactListTile extends StatelessWidget {
             firstName: contact.firstName,
             backgroundColor: FlutterContactsTheme.primaryColor,
             textColor: FlutterContactsTheme.iconNameTextColor),
-        trailing: onTap == null ? null : const Icon(Icons.chevron_right),
+        // trailing: onTap == null ? null : const Icon(Icons.chevron_right),
+        trailing: const Icon(
+          Icons.star_outline,
+          color: FlutterContactsTheme.greyColor,
+          size: 36.0,
+        ),
       ),
     );
   }
