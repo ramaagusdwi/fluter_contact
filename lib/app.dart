@@ -3,7 +3,6 @@ import 'package:contacts_repository/contacts_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_contact/authentication/bloc/authentication_bloc.dart';
-import 'package:flutter_contact/home/view/home_page.dart';
 import 'package:flutter_contact/login/view/login_page.dart';
 import 'package:flutter_contact/splash/view/splash_page.dart';
 import 'package:flutter_contact/theme/theme.dart';

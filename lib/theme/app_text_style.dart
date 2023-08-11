@@ -11,6 +11,12 @@ class AppTextStyle {
       purpleTextStyle.copyWith(fontSize: 14, fontWeight: medium);
   static final textMuted12 =
       secondaryTextStyle.copyWith(fontSize: 12, fontWeight: semiBold);
-  static final textWhite20 =
+  static final textWhite14SemiBold =
+      whiteTextStyle.copyWith(fontSize: 14, fontWeight: semiBold);
+  static final textWhite16SemiBold =
+      whiteTextStyle.copyWith(fontSize: 16, fontWeight: semiBold);
+  static final textWhite18SemiBold =
+      whiteTextStyle.copyWith(fontSize: 18, fontWeight: semiBold);
+  static final textWhite20SemiBold =
       whiteTextStyle.copyWith(fontSize: 20, fontWeight: semiBold);
 }

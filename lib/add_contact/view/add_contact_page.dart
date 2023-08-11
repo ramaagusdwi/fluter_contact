@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_contact/add_contact/bloc/add_contact_bloc.dart';
+import 'package:flutter_contact/theme/app_text_style.dart';
 import 'package:flutter_contact/theme/theme.dart';
 
 class AddContactPage extends StatelessWidget {
@@ -49,8 +50,9 @@ class AddContactView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           'Membuat kontak baru',
+          style: AppTextStyle.textWhite18SemiBold,
         ),
         actions: [
           Center(
@@ -62,8 +64,9 @@ class AddContactView extends StatelessWidget {
                       .add(const AddContactSubmitted()),
               child: status.isLoadingOrSuccess
                   ? const CupertinoActivityIndicator()
-                  : const Text(
+                  : Text(
                       'Simpan',
+                      style: AppTextStyle.textWhite14SemiBold,
                     ),
             ),
           ),
