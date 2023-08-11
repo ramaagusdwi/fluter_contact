@@ -9,7 +9,8 @@ const blackColor = Colors.black;
 const whiteColor = Colors.white;
 
 const Color primaryTextColor = Color(0xFF212529);
-const Color secondaryTextColor = Color(0xff878A99);
+// const Color secondaryTextColor = Color(0xff878A99);
+const Color secondaryTextColor = Color(0xff888888);
 
 //border text field color
 Color get borderError => Colors.red.shade400;
