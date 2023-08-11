@@ -4,7 +4,7 @@ import 'package:flutter_contact/theme/app_text_style.dart';
 import 'package:flutter_contact/theme/theme.dart';
 import 'package:flutter_contact/extension/string_extention.dart';
 
-class ContactListTile extends StatelessWidget {
+class ContactListTile extends StatefulWidget {
   const ContactListTile({
     required this.contact,
     super.key,
@@ -19,13 +19,20 @@ class ContactListTile extends StatelessWidget {
   final VoidCallback? onTap;
 
   @override
+  State<ContactListTile> createState() => _ContactListTileState();
+}
+
+class _ContactListTileState extends State<ContactListTile> {
+  bool _isFavorite = false;
+
+  @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final captionColor = theme.textTheme.bodySmall?.color;
 
     return Dismissible(
-      key: Key('todoListTile_dismissible_${contact.id}'),
-      onDismissed: onDismissed,
+      key: Key('todoListTile_dismissible_${widget.contact.id}'),
+      onDismissed: widget.onDismissed,
       direction: DismissDirection.endToStart,
       background: Container(
         alignment: Alignment.centerRight,
@@ -37,20 +44,17 @@ class ContactListTile extends StatelessWidget {
         ),
       ),
       child: ListTile(
-        onTap: onTap,
-        title: Text(
-          contact.firstName.toCapitalized(),
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          style: !contact.isFavorite
-              ? null
-              : AppTextStyle.textBody14Bold
-        ),
+        onTap: widget.onTap,
+        title: Text(widget.contact.firstName.toCapitalized(),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: !widget.contact.isFavorite
+                ? null
+                : AppTextStyle.textBody14Bold),
         subtitle: Text(
-          contact.phone.toFormatPhoneIndo(),
+          widget.contact.phone.toFormatPhoneIndo(),
           maxLines: 1,
           style: AppTextStyle.textMuted14SemiBold,
-         
         ),
         // leading: Checkbox(
         //   shape: const ContinuousRectangleBorder(
@@ -62,14 +66,23 @@ class ContactListTile extends StatelessWidget {
         //       : (value) => onToggleCompleted!(value!),
         // ),
         leading: _NameIcon(
-            firstName: contact.firstName,
+            firstName: widget.contact.firstName,
             backgroundColor: FlutterContactsTheme.primaryColor,
             textColor: FlutterContactsTheme.iconNameTextColor),
         // trailing: onTap == null ? null : const Icon(Icons.chevron_right),
-        trailing: const Icon(
-          Icons.star_outline,
-          color: FlutterContactsTheme.greyColor,
-          size: 36.0,
+        trailing: InkWell(
+          onTap: () {
+            setState(() {
+              _isFavorite = !_isFavorite;
+            });
+          },
+          child: Icon(
+            _isFavorite ? Icons.star : Icons.star_outline,
+            color: _isFavorite
+                ? FlutterContactsTheme.primaryColor
+                : FlutterContactsTheme.greyColor,
+            size: 36.0,
+          ),
         ),
       ),
     );
