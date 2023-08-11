@@ -17,14 +17,14 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Builder(
-              builder: (context) {
-                final userId = context.select(
-                  (AuthenticationBloc bloc) => bloc.state.status
-                );
-                return Text('UserID: $userId');
-              },
-            ),
+            // Builder(
+            //   builder: (context) {
+            //     final userId = context.select(
+            //       (AuthenticationBloc bloc) => bloc.state.status
+            //     );
+            //     return Text('UserID: $userId');
+            //   },
+            // ),
             ElevatedButton(
               child: const Text('Logout'),
               onPressed: () {
