@@ -1,5 +1,5 @@
 name: flutter_contact
-description: A new Flutter project.
+description: An example contact app that showcases bloc state management patterns..
 publish_to: 'none'
 version: 0.1.0
 
