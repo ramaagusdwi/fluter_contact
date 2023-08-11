@@ -30,51 +30,36 @@ class _ContactListTileState extends State<ContactListTile> {
     final theme = Theme.of(context);
     final captionColor = theme.textTheme.bodySmall?.color;
 
-    return Dismissible(
-      key: Key('todoListTile_dismissible_${widget.contact.id}'),
-      onDismissed: widget.onDismissed,
-      direction: DismissDirection.endToStart,
-      background: Container(
-        alignment: Alignment.centerRight,
-        color: theme.colorScheme.error,
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: const Icon(
-          Icons.delete,
-          color: Color(0xAAFFFFFF),
-        ),
-      ),
-      child: ListTile(
-        onTap: widget.onTap,
-        title: Text(widget.contact.firstName.toCapitalized(),
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: !widget.contact.isFavorite
-                ? null
-                : AppTextStyle.textBody14Bold),
-        subtitle: Text(
-          widget.contact.phone.toFormatPhoneIndo(),
+    return ListTile(
+      onTap: widget.onTap,
+      title: Text(widget.contact.firstName.toCapitalized(),
           maxLines: 1,
-          style: AppTextStyle.textMuted14SemiBold,
-        ),
+          overflow: TextOverflow.ellipsis,
+          style:
+              !widget.contact.isFavorite ? null : AppTextStyle.textBody14Bold),
+      subtitle: Text(
+        widget.contact.phone.toFormatPhoneIndo(),
+        maxLines: 1,
+        style: AppTextStyle.textMuted14SemiBold,
+      ),
 
-        leading: _NameIcon(
-            firstName: widget.contact.firstName,
-            backgroundColor: FlutterContactsTheme.primaryColor,
-            textColor: FlutterContactsTheme.iconNameTextColor),
+      leading: _NameIcon(
+          firstName: widget.contact.firstName,
+          backgroundColor: FlutterContactsTheme.primaryColor,
+          textColor: FlutterContactsTheme.iconNameTextColor),
     
-        trailing: InkWell(
-          onTap: () {
-            setState(() {
-              _isFavorite = !_isFavorite;
-            });
-          },
-          child: Icon(
-            _isFavorite ? Icons.star : Icons.star_outline,
-            color: _isFavorite
-                ? FlutterContactsTheme.primaryColor
-                : FlutterContactsTheme.greyColor,
-            size: 6.0,
-          ),
+      trailing: InkWell(
+        onTap: () {
+          setState(() {
+            _isFavorite = !_isFavorite;
+          });
+        },
+        child: Icon(
+          _isFavorite ? Icons.star : Icons.star_outline,
+          color: _isFavorite
+              ? FlutterContactsTheme.primaryColor
+              : FlutterContactsTheme.greyColor,
+          size: 16.0,
         ),
       ),
     );
