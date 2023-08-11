@@ -9,23 +9,25 @@ environment:
 dependencies:
   authentication_repository:
     path: packages/authentication_repository
-  local_storage_contact_api:
-    path: packages/local_storage_contact_api
+  bloc: ^8.1.2
+  bloc_effects: ^1.0.3
   contact_api:
     path: packages/contact_api
   contacts_repository:
-    path: packages/contacts_repository     
-
-  bloc: ^8.1.2
-  bloc_effects: ^1.0.3
+    path: packages/contacts_repository
+  email_validator: ^2.1.17
   equatable: ^2.0.5
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.3
   formz: ^0.6.0
+  google_fonts: ^5.1.0
+  local_storage_contact_api:
+    path: packages/local_storage_contact_api
   rxdart: ^0.27.7
   shared_preferences: ^2.2.0
-  google_fonts: ^5.1.0
+  form_validators:
+    path: packages/form_validators
 
 dev_dependencies:
   flutter_lints: ^2.0.0
