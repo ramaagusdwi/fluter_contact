@@ -1,6 +1,6 @@
-import 'package:bloc/bloc.dart';
 import 'package:contacts_repository/contacts_repository.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'add_contact_event.dart';
 part 'add_contact_state.dart';

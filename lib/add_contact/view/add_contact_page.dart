@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_contact/add_contact/bloc/add_contact_bloc.dart';
+import 'package:flutter_contact/theme/theme.dart';
 
 class AddContactPage extends StatelessWidget {
   const AddContactPage({super.key});
 
   static Route<void> route() {
     return MaterialPageRoute(
-      fullscreenDialog: true,
       builder: (context) => BlocProvider(
         create: (context) => AddContactBloc(
           contactsRepository: context.read<ContactsRepository>(),
@@ -100,8 +100,29 @@ class AddContactView extends StatelessWidget {
   }
 }
 
-class _TitleField extends StatelessWidget {
+class _TitleField extends StatefulWidget {
   const _TitleField();
+
+  @override
+  State<_TitleField> createState() => _TitleFieldState();
+}
+
+class _TitleFieldState extends State<_TitleField> {
+  FocusNode focusNode = FocusNode();
+  String hintText = 'Nama Depan';
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    focusNode.addListener(() {
+      if (focusNode.hasFocus) {
+        hintText = '';
+      } else {
+        hintText = 'Nama Depan';
+      }
+      setState(() {});
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -109,15 +130,28 @@ class _TitleField extends StatelessWidget {
     final state = context.watch<AddContactBloc>().state;
     // final hintText = state.initialTodo?.title ?? '';
 
+     
     return TextFormField(
       key: const Key('AddContactView_title_textFormField'),
+      focusNode: focusNode,
       initialValue: state.title,
       decoration: InputDecoration(
         enabled: !state.status.isLoadingOrSuccess,
+        focusedBorder: const UnderlineInputBorder(
+          borderSide: BorderSide(
+              color: FlutterContactsTheme.primaryColor), //<-- SEE HERE
+        ),
+        floatingLabelStyle: MaterialStateTextStyle.resolveWith(
+          (Set<MaterialState> states) {
+            final Color color = states.contains(MaterialState.error)
+                ? Theme.of(context).colorScheme.error
+                : FlutterContactsTheme.primaryColor;
+            return TextStyle(color: color, letterSpacing: 1.3);
+          },
+        ),
         labelText: 'Nama Depan',
-        hintText: 'Name Depan',
+        hintText: hintText,
       ),
-      maxLength: 50,
       inputFormatters: [
         LengthLimitingTextInputFormatter(50),
         FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9\s]')),
