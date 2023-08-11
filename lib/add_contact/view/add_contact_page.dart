@@ -31,7 +31,7 @@ class AddContactPage extends StatelessWidget {
               current.status == AddContactStatus.success ||
           current.status == AddContactStatus.failure,
       listener: (context, state) {
-        if (state.status.isFailure) {
+        if (state.status.isFailure && state.errMessage.isNotEmpty) {
           var snackBar = SnackBar(
             content: Text(
               state.errMessage,
