@@ -68,7 +68,7 @@ class LocalStorageContactApi extends ContactsApi {
     if (contactIndex == -1) {
       throw ContactNotFoundException();
     } else {
-      contacts[contactIndex].isFavorite = !contacts[contactIndex].isFavorite;
+      // contacts[contactIndex].isFavorite = !contacts[contactIndex].isFavorite;
       _contactStreamController.add(contacts);
       return _setValue(kContactsCollectionKey, json.encode(contacts));
     }

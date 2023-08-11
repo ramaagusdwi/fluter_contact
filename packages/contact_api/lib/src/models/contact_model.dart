@@ -61,7 +61,7 @@ class ContactModel extends Equatable {
   /// Whether the `contact` is completed.
   ///
   /// Defaults to `false`.
-  bool isFavorite;
+  final bool isFavorite;
 
   /// Returns a copy of this `contact` with the given values updated.
   ///

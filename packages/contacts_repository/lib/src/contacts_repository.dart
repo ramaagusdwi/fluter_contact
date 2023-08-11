@@ -30,4 +30,7 @@ class ContactsRepository {
   ///
   Future<void> favoriteContact({required String id}) =>
       _contactsApi.favorite(id: id);
+
+  ContactModel getContact({required String id}) =>
+      _contactsApi.getContact(id: id);
 }

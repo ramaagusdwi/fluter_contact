@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_contact/add_contact/view/add_contact_page.dart';
+import 'package:flutter_contact/detail_contact/view/detail_contact_page.dart';
 import 'package:flutter_contact/theme/app_text_style.dart';
 import 'package:flutter_contact/theme/theme.dart';
 import '../bloc/contacts_overview_bloc.dart';
@@ -110,9 +111,10 @@ class TodosOverviewView extends StatelessWidget {
                         //     .add(TodosOverviewTodoDeleted(todo));
                       },
                       onTap: () {
-                        // Navigator.of(context).push(
-                        //   EditTodoPage.route(initialTodo: todo),
-                        // );
+                        debugPrint('idKontak: ${contact.id}');
+                        Navigator.of(context).push(
+                          DetailContactPage.route(contact.id),
+                        );
                       },
                     ),
                 ],
@@ -132,7 +134,6 @@ class TodosOverviewView extends StatelessWidget {
         backgroundColor: FlutterContactsTheme.primaryColor,
         foregroundColor: Colors.white,
       ),
-    
     );
   }
 }

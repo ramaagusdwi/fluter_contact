@@ -23,4 +23,6 @@ class AppTextStyle {
       whiteTextStyle.copyWith(fontSize: 18, fontWeight: semiBold);
   static final textWhite20SemiBold =
       whiteTextStyle.copyWith(fontSize: 20, fontWeight: semiBold);
+  static final textWhite28SemiBold =
+      whiteTextStyle.copyWith(fontSize: 28, fontWeight: semiBold);
 }
