@@ -1,4 +1,5 @@
 import 'package:contacts_repository/contacts_repository.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -27,8 +28,24 @@ class AddContactPage extends StatelessWidget {
     return BlocListener<AddContactBloc, AddContactState>(
       listenWhen: (previous, current) =>
           previous.status != current.status &&
-          current.status == AddContactStatus.success,
-      listener: (context, state) => Navigator.of(context).pop(),
+              current.status == AddContactStatus.success ||
+          current.status == AddContactStatus.failure,
+      listener: (context, state) {
+        if (state.status.isFailure) {
+          var snackBar = SnackBar(
+            content: Text(
+              state.errMessage,
+              style: AppTextStyle.textWhite14SemiBold,
+            ),
+            backgroundColor: Colors.redAccent,
+          );
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        }
+
+        if (!state.status.isFailure) {
+          Navigator.of(context).pop();
+        }
+      },
       child: const AddContactView(),
     );
   }
@@ -147,7 +164,7 @@ class _TitleFieldState extends State<_TitleField> {
     return TextFormField(
       key: const Key('AddContactView_firstName_textFormField'),
       focusNode: focusNode,
-      initialValue: state.title,
+      initialValue: state.firstName,
       decoration: InputDecoration(
         icon: Align(
           widthFactor: 0.5,
@@ -222,7 +239,7 @@ class _LastNameFieldState extends State<_LastNameField> {
     return TextFormField(
       focusNode: focusNode,
       key: const Key('AddContactView_lastName_textFormField'),
-      initialValue: state.title,
+      initialValue: state.firstName,
       decoration: InputDecoration(
         icon: Align(
           widthFactor: 0.5,
@@ -289,7 +306,7 @@ class _WorkFieldState extends State<_WorkField> {
     return TextFormField(
       focusNode: focusNode,
       key: const Key('AddContactView_work_textFormField'),
-      initialValue: state.title,
+      initialValue: state.firstName,
       decoration: InputDecoration(
         icon: Align(
           widthFactor: 0.5,
@@ -356,7 +373,7 @@ class _PhoneFieldState extends State<_PhoneField> {
     return TextFormField(
       focusNode: focusNode,
       key: const Key('AddContactView_work_textFormField'),
-      initialValue: state.title,
+      initialValue: state.firstName,
       decoration: InputDecoration(
         icon: Align(
           widthFactor: 0.5,
@@ -422,7 +439,7 @@ class _EmailFieldState extends State<_EmailField> {
     return TextFormField(
       focusNode: focusNode,
       key: const Key('AddContactView_email_textFormField'),
-      initialValue: state.title,
+      initialValue: state.firstName,
       decoration: InputDecoration(
         icon: Align(
           widthFactor: 0.5,
@@ -450,6 +467,17 @@ class _EmailFieldState extends State<_EmailField> {
       ],
       onChanged: (value) {
         context.read<AddContactBloc>().add(AddContactEmailChanged(value));
+      },
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Email wajib diisi';
+        }
+
+        bool isvalid = EmailValidator.validate(value);
+        if (!isvalid) {
+          return " Email tidak valid";
+        }
+        return null;
       },
     );
   }
@@ -489,7 +517,7 @@ class _WebsiteFieldState extends State<_WebsiteField> {
     return TextFormField(
       focusNode: focusNode,
       key: const Key('AddContactView_website_textFormField'),
-      initialValue: state.title,
+      initialValue: state.firstName,
       decoration: InputDecoration(
         icon: Align(
           widthFactor: 0.5,

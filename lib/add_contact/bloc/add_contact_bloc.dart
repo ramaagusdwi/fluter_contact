@@ -11,8 +11,8 @@ class AddContactBloc extends Bloc<AddContactEvent, AddContactState> {
   })  : _contactsRepository = contactsRepository,
         super(
           const AddContactState(
-            title: '',
-            description: '',
+            firstName: '',
+            lastName: '',
           ),
         ) {
     on<AddContactTitleChanged>(_onTitleChanged);
@@ -26,32 +26,43 @@ class AddContactBloc extends Bloc<AddContactEvent, AddContactState> {
     AddContactTitleChanged event,
     Emitter<AddContactState> emit,
   ) {
-    emit(state.copyWith(title: event.title));
+    emit(state.copyWith(firstName: event.title));
   }
 
   void _onDescriptionChanged(
     AddContactDescriptionChanged event,
     Emitter<AddContactState> emit,
   ) {
-    emit(state.copyWith(description: event.description));
+    emit(state.copyWith(lastName: event.description));
   }
 
   Future<void> _onSubmitted(
     AddContactSubmitted event,
     Emitter<AddContactState> emit,
   ) async {
-    emit(state.copyWith(status: AddContactStatus.loading));
-    final contactState = state.copyWith(
-      title: state.title,
-      description: state.description,
-    );
+    if (state.email.isEmpty || state.phone.isEmpty) {
+      emit(state.copyWith(
+          status: AddContactStatus.failure,
+          errorMessage: 'Email atau telpon harus diisi!'));
+      // return;
+    }
 
-    try {
-      await _contactsRepository.saveContactModel(ContactModel(
-          title: contactState.title, description: contactState.description));
-      emit(state.copyWith(status: AddContactStatus.success));
-    } catch (e) {
-      emit(state.copyWith(status: AddContactStatus.failure));
+    if (state.email.isNotEmpty && state.phone.isNotEmpty) {
+      emit(state.copyWith(status: AddContactStatus.loading));
+      final contactState = state.copyWith(
+        firstName: state.firstName,
+        lastName: state.lastName,
+      );
+
+      try {
+        await _contactsRepository.saveContactModel(ContactModel(
+            title: contactState.firstName, description: contactState.lastName));
+        emit(state.copyWith(status: AddContactStatus.success));
+      } catch (e) {
+        emit(state.copyWith(
+            status: AddContactStatus.failure,
+            errorMessage: 'Gagal tambah kontak!'));
+      }
     }
   }
 }
