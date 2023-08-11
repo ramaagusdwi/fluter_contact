@@ -32,7 +32,7 @@ abstract class ContactsApi {
   // /// Returns the number of updated Contacts.
   // Future<int> completeAll({required bool isCompleted});
 
-  Future<int> favorite({required bool isFavorite, required String id});
+  Future<void> favorite({required String id});
 }
 
 /// Error thrown when a [Contact] with a given id is not found.

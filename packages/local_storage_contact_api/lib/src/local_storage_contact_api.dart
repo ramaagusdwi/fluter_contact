@@ -50,12 +50,28 @@ class LocalStorageContactApi extends ContactsApi {
 
   @override
   Future<void> deleteContact(String id) {
-    throw UnimplementedError();
+    final contacts = [..._contactStreamController.value];
+    final todoIndex = contacts.indexWhere((t) => t.id == id);
+    if (todoIndex == -1) {
+      throw ContactNotFoundException();
+    } else {
+      contacts.removeAt(todoIndex);
+      _contactStreamController.add(contacts);
+      return _setValue(kContactsCollectionKey, json.encode(contacts));
+    }
   }
 
   @override
-  Future<int> favorite({required bool isFavorite, required String id}) {
-    throw UnimplementedError();
+  Future<void> favorite({required String id}) {
+    final contacts = [..._contactStreamController.value];
+    final contactIndex = contacts.indexWhere((t) => t.id == id);
+    if (contactIndex == -1) {
+      throw ContactNotFoundException();
+    } else {
+      contacts[contactIndex].isFavorite = !contacts[contactIndex].isFavorite;
+      _contactStreamController.add(contacts);
+      return _setValue(kContactsCollectionKey, json.encode(contacts));
+    }
   }
 
   @override
