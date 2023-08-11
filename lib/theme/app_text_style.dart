@@ -1,6 +1,8 @@
 import 'package:flutter_contact/theme/text_style_resource.dart';
 
 class AppTextStyle {
+  static final textBody14Bold =
+      primaryTextStyle.copyWith(fontSize: 14, fontWeight: bold);
   static final textBody14 =
       primaryTextStyle.copyWith(fontSize: 14, fontWeight: semiBold);
   static final textBody16 =
@@ -11,8 +13,8 @@ class AppTextStyle {
       purpleTextStyle.copyWith(fontSize: 14, fontWeight: medium);
   static final textMuted12 =
       secondaryTextStyle.copyWith(fontSize: 12, fontWeight: semiBold);
-  static final textMuted14Medium =
-      secondaryTextStyle.copyWith(fontSize: 12, fontWeight: medium);
+  static final textMuted14SemiBold =
+      secondaryTextStyle.copyWith(fontSize: 12, fontWeight: semiBold);
   static final textWhite14SemiBold =
       whiteTextStyle.copyWith(fontSize: 14, fontWeight: semiBold);
   static final textWhite16SemiBold =

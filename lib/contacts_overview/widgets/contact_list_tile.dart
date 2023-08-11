@@ -44,12 +44,12 @@ class ContactListTile extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
           style: !contact.isFavorite
               ? null
-              : AppTextStyle.textBody14
+              : AppTextStyle.textBody14Bold
         ),
         subtitle: Text(
           contact.phone,
           maxLines: 1,
-          style: AppTextStyle.textMuted14Medium,
+          style: AppTextStyle.textMuted14SemiBold,
          
         ),
         // leading: Checkbox(
