@@ -3,9 +3,9 @@ import 'package:contact_api/contact_api.dart';
 /// {@template ContactModels_repository}
 /// A repository that handles `ContactModel` related requests.
 /// {@endtemplate}
-class ContactRepository {
+class ContactsRepository {
   /// {@macro ContactModels_repository}
-  const ContactRepository({
+  const ContactsRepository({
     required ContactsApi contactApi,
   }) : _contactsApi = contactApi;
 
