@@ -23,10 +23,11 @@ class AuthenticationRepository {
     String? token = await client.login(email: email, password: password);
     debugPrint('token: $token');
     if (token != null) {
-      await Future.delayed(
-        const Duration(milliseconds: 300),
-        () => _controller.add(AuthenticationStatus.authenticated),
-      );
+      _controller.add(AuthenticationStatus.authenticated);
+      // await Future.delayed(
+      //   const Duration(milliseconds: 300),
+      //   () => _controller.add(AuthenticationStatus.authenticated),
+      // );
     }
   }
 

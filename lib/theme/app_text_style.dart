@@ -7,7 +7,7 @@ class AppTextStyle {
       primaryTextStyle.copyWith(fontSize: 16, fontWeight: semiBold);
   static final textBodyMedium16 =
       primaryTextStyle.copyWith(fontSize: 14, fontWeight: medium);
-  static final textBodyMedium16Purple =
+  static final textBodyMedium14Purple =
       purpleTextStyle.copyWith(fontSize: 14, fontWeight: medium);
   static final textMuted12 =
       secondaryTextStyle.copyWith(fontSize: 12, fontWeight: semiBold);

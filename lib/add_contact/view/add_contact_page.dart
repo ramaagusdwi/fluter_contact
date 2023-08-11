@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_contact/add_contact/bloc/add_contact_bloc.dart';
 import 'package:flutter_contact/theme/app_text_style.dart';
+import 'package:flutter_contact/theme/color_resource.dart';
 import 'package:flutter_contact/theme/theme.dart';
 
 class AddContactPage extends StatelessWidget {
@@ -94,7 +95,19 @@ class AddContactView extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.all(16),
             child: Column(
-              children: [_TitleField(), _LastNameField()],
+              children: [
+                _TitleField(),
+                SizedBox(height: 12),
+                _LastNameField(),
+                SizedBox(height: 12),
+                _WorkField(),
+                SizedBox(height: 12),
+                _PhoneField(),
+                SizedBox(height: 12),
+                _EmailField(),
+                SizedBox(height: 12),
+                _WebsiteField(),
+              ],
             ),
           ),
         ),
@@ -131,12 +144,19 @@ class _TitleFieldState extends State<_TitleField> {
   Widget build(BuildContext context) {
     final state = context.watch<AddContactBloc>().state;
 
-     
     return TextFormField(
       key: const Key('AddContactView_firstName_textFormField'),
       focusNode: focusNode,
       initialValue: state.title,
       decoration: InputDecoration(
+        icon: Align(
+          widthFactor: 0.5,
+          heightFactor: 0.5,
+          child: Icon(
+            Icons.person,
+            color: focusNode.hasFocus ? primaryColor : unFocusColor,
+          ),
+        ),
         enabled: !state.status.isLoadingOrSuccess,
         focusedBorder: const UnderlineInputBorder(
           borderSide: BorderSide(
@@ -151,7 +171,11 @@ class _TitleFieldState extends State<_TitleField> {
           },
         ),
         labelText: 'Nama Depan',
+        labelStyle: focusNode.hasFocus
+            ? AppTextStyle.textBodyMedium14Purple
+            : AppTextStyle.textMuted12,
         hintText: hintText,
+        hintStyle: AppTextStyle.textMuted12,
       ),
       inputFormatters: [
         LengthLimitingTextInputFormatter(50),
@@ -174,6 +198,7 @@ class _LastNameField extends StatefulWidget {
 class _LastNameFieldState extends State<_LastNameField> {
   FocusNode focusNode = FocusNode();
   String hintText = 'Nama Belakang';
+  TextStyle labelStyle = AppTextStyle.textMuted12;
   @override
   void initState() {
     // TODO: implement initState
@@ -181,25 +206,43 @@ class _LastNameFieldState extends State<_LastNameField> {
     focusNode.addListener(() {
       if (focusNode.hasFocus) {
         hintText = '';
+        labelStyle = AppTextStyle.textBodyMedium14Purple;
       } else {
         hintText = 'Nama Belakang';
+        labelStyle = AppTextStyle.textMuted12;
       }
       setState(() {});
     });
   }
 
-  
   @override
   Widget build(BuildContext context) {
     final state = context.watch<AddContactBloc>().state;
 
     return TextFormField(
+      focusNode: focusNode,
       key: const Key('AddContactView_lastName_textFormField'),
       initialValue: state.title,
       decoration: InputDecoration(
+        icon: Align(
+          widthFactor: 0.5,
+          heightFactor: 0.5,
+          child: Icon(
+            Icons.person,
+            color: focusNode.hasFocus ? primaryColor : unFocusColor,
+          ),
+        ),
+        focusedBorder: const UnderlineInputBorder(
+          borderSide: BorderSide(
+              color: FlutterContactsTheme.primaryColor), //<-- SEE HERE
+        ),
         enabled: !state.status.isLoadingOrSuccess,
         labelText: 'Nama Belakang',
+        labelStyle: focusNode.hasFocus
+            ? AppTextStyle.textBodyMedium14Purple
+            : AppTextStyle.textMuted12,
         hintText: hintText,
+        hintStyle: AppTextStyle.textMuted12,
       ),
       inputFormatters: [
         LengthLimitingTextInputFormatter(50),
@@ -207,6 +250,273 @@ class _LastNameFieldState extends State<_LastNameField> {
       ],
       onChanged: (value) {
         context.read<AddContactBloc>().add(AddContactDescriptionChanged(value));
+      },
+    );
+  }
+}
+
+class _WorkField extends StatefulWidget {
+  const _WorkField();
+
+  @override
+  State<_WorkField> createState() => _WorkFieldState();
+}
+
+class _WorkFieldState extends State<_WorkField> {
+  FocusNode focusNode = FocusNode();
+  String hintText = 'Bekerja';
+  TextStyle labelStyle = AppTextStyle.textMuted12;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    focusNode.addListener(() {
+      if (focusNode.hasFocus) {
+        hintText = '';
+        labelStyle = AppTextStyle.textBodyMedium14Purple;
+      } else {
+        hintText = 'Bekerja ';
+        labelStyle = AppTextStyle.textMuted12;
+      }
+      setState(() {});
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final state = context.watch<AddContactBloc>().state;
+
+    return TextFormField(
+      focusNode: focusNode,
+      key: const Key('AddContactView_work_textFormField'),
+      initialValue: state.title,
+      decoration: InputDecoration(
+        icon: Align(
+          widthFactor: 0.5,
+          heightFactor: 0.5,
+          child: Icon(
+            Icons.work,
+            color: focusNode.hasFocus ? primaryColor : unFocusColor,
+          ),
+        ),
+        focusedBorder: const UnderlineInputBorder(
+          borderSide: BorderSide(
+              color: FlutterContactsTheme.primaryColor), //<-- SEE HERE
+        ),
+        enabled: !state.status.isLoadingOrSuccess,
+        labelText: 'Bekerja',
+        labelStyle: focusNode.hasFocus
+            ? AppTextStyle.textBodyMedium14Purple
+            : AppTextStyle.textMuted12,
+        hintText: hintText,
+        hintStyle: AppTextStyle.textMuted12,
+      ),
+      inputFormatters: [
+        LengthLimitingTextInputFormatter(50),
+        FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9\s]')),
+      ],
+      onChanged: (value) {
+        context.read<AddContactBloc>().add(AddContactWorkChanged(value));
+      },
+    );
+  }
+}
+
+class _PhoneField extends StatefulWidget {
+  const _PhoneField();
+
+  @override
+  State<_PhoneField> createState() => _PhoneFieldState();
+}
+
+class _PhoneFieldState extends State<_PhoneField> {
+  FocusNode focusNode = FocusNode();
+  String hintText = 'Nomor Telepon';
+  TextStyle labelStyle = AppTextStyle.textMuted12;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    focusNode.addListener(() {
+      if (focusNode.hasFocus) {
+        hintText = '';
+        labelStyle = AppTextStyle.textBodyMedium14Purple;
+      } else {
+        hintText = 'Nomor Telepon';
+        labelStyle = AppTextStyle.textMuted12;
+      }
+      setState(() {});
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final state = context.watch<AddContactBloc>().state;
+
+    return TextFormField(
+      focusNode: focusNode,
+      key: const Key('AddContactView_work_textFormField'),
+      initialValue: state.title,
+      decoration: InputDecoration(
+        icon: Align(
+          widthFactor: 0.5,
+          heightFactor: 0.5,
+          child: Icon(
+            Icons.phone,
+            color: focusNode.hasFocus ? primaryColor : unFocusColor,
+          ),
+        ),
+        focusedBorder: const UnderlineInputBorder(
+          borderSide: BorderSide(
+              color: FlutterContactsTheme.primaryColor), //<-- SEE HERE
+        ),
+        enabled: !state.status.isLoadingOrSuccess,
+        labelText: 'Nomor Telepon',
+        labelStyle: focusNode.hasFocus
+            ? AppTextStyle.textBodyMedium14Purple
+            : AppTextStyle.textMuted12,
+        hintText: hintText,
+        hintStyle: AppTextStyle.textMuted12,
+      ),
+      maxLength: 16,
+      keyboardType: TextInputType.number,
+      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+      onChanged: (value) {
+        context.read<AddContactBloc>().add(AddContactPhoneChanged(value));
+      },
+    );
+  }
+}
+
+class _EmailField extends StatefulWidget {
+  const _EmailField();
+
+  @override
+  State<_EmailField> createState() => _EmailFieldState();
+}
+
+class _EmailFieldState extends State<_EmailField> {
+  FocusNode focusNode = FocusNode();
+  String hintText = 'Email';
+  TextStyle labelStyle = AppTextStyle.textMuted12;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    focusNode.addListener(() {
+      if (focusNode.hasFocus) {
+        hintText = '';
+        labelStyle = AppTextStyle.textBodyMedium14Purple;
+      } else {
+        hintText = 'Email';
+        labelStyle = AppTextStyle.textMuted12;
+      }
+      setState(() {});
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final state = context.watch<AddContactBloc>().state;
+
+    return TextFormField(
+      focusNode: focusNode,
+      key: const Key('AddContactView_email_textFormField'),
+      initialValue: state.title,
+      decoration: InputDecoration(
+        icon: Align(
+          widthFactor: 0.5,
+          heightFactor: 0.5,
+          child: Icon(
+            Icons.email,
+            color: focusNode.hasFocus ? primaryColor : unFocusColor,
+          ),
+        ),
+        focusedBorder: const UnderlineInputBorder(
+          borderSide: BorderSide(
+              color: FlutterContactsTheme.primaryColor), //<-- SEE HERE
+        ),
+        enabled: !state.status.isLoadingOrSuccess,
+        labelText: 'Email',
+        labelStyle: focusNode.hasFocus
+            ? AppTextStyle.textBodyMedium14Purple
+            : AppTextStyle.textMuted12,
+        hintText: hintText,
+        hintStyle: AppTextStyle.textMuted12,
+      ),
+      inputFormatters: [
+        LengthLimitingTextInputFormatter(50),
+        FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9\s]')),
+      ],
+      onChanged: (value) {
+        context.read<AddContactBloc>().add(AddContactEmailChanged(value));
+      },
+    );
+  }
+}
+
+class _WebsiteField extends StatefulWidget {
+  const _WebsiteField();
+
+  @override
+  State<_WebsiteField> createState() => _WebsiteFieldState();
+}
+
+class _WebsiteFieldState extends State<_WebsiteField> {
+  FocusNode focusNode = FocusNode();
+  String hintText = 'Website';
+  TextStyle labelStyle = AppTextStyle.textMuted12;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    focusNode.addListener(() {
+      if (focusNode.hasFocus) {
+        hintText = '';
+        labelStyle = AppTextStyle.textBodyMedium14Purple;
+      } else {
+        hintText = 'Website';
+        labelStyle = AppTextStyle.textMuted12;
+      }
+      setState(() {});
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final state = context.watch<AddContactBloc>().state;
+
+    return TextFormField(
+      focusNode: focusNode,
+      key: const Key('AddContactView_website_textFormField'),
+      initialValue: state.title,
+      decoration: InputDecoration(
+        icon: Align(
+          widthFactor: 0.5,
+          heightFactor: 0.5,
+          child: Icon(
+            Icons.web,
+            color: focusNode.hasFocus ? primaryColor : unFocusColor,
+          ),
+        ),
+        focusedBorder: const UnderlineInputBorder(
+          borderSide: BorderSide(
+              color: FlutterContactsTheme.primaryColor), //<-- SEE HERE
+        ),
+        enabled: !state.status.isLoadingOrSuccess,
+        labelText: 'Website',
+        labelStyle: focusNode.hasFocus
+            ? AppTextStyle.textBodyMedium14Purple
+            : AppTextStyle.textMuted12,
+        hintText: hintText,
+        hintStyle: AppTextStyle.textMuted12,
+      ),
+      inputFormatters: [
+        LengthLimitingTextInputFormatter(50),
+        FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9\s]')),
+      ],
+      onChanged: (value) {
+        context.read<AddContactBloc>().add(AddContactWebsiteChanged(value));
       },
     );
   }
