@@ -53,12 +53,34 @@ class DetailContactView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final state = context.watch<DetailContactBloc>().state;
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          size: 26,
+          color: Colors.white,
+        ),
+        actionsIconTheme: const IconThemeData(
+          size: 26,
+          color: Colors.white,
+        ),
         title: null,
-        actions: const [SizedBox(width: 12)],
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.star_outline,
+              color: Colors.white,
+            ),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.edit,
+              color: Colors.white,
+            ),
+          ),
+        ],
         elevation: 0,
       ),
       body: Column(
