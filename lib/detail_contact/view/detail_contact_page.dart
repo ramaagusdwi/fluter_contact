@@ -53,9 +53,7 @@ class DetailContactView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final l10n = context.l10n;
-    final status =
-        context.select((DetailContactBloc bloc) => bloc.state.status);
+
     final state = context.watch<DetailContactBloc>().state;
     return Scaffold(
       appBar: AppBar(
@@ -109,8 +107,6 @@ class DetailContactInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final status =
-        context.select((DetailContactBloc bloc) => bloc.state.status);
     final state = context.watch<DetailContactBloc>().state;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
