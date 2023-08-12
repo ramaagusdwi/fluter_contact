@@ -8,5 +8,5 @@ extension StringCasingExtension on String {
 
   String toFormatPhoneIndo() => length > 0
       ? '(${substring(0, 3)}) ${substring(3, 6)}-${substring(6, 9)}-${substring(9, 12)}'
-      : '';    
+      : '';
 }

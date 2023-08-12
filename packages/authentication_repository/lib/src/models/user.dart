@@ -14,7 +14,6 @@ class User {
       };
 }
 
-
 class Data {
   Data({
     required this.id,

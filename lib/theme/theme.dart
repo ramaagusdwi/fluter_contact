@@ -9,7 +9,7 @@ class FlutterContactsTheme {
       appBarTheme: const AppBarTheme(
         color: Color(0xFF3F51B5),
       ),
-      scaffoldBackgroundColor:  Color(0xFFFAFAFA),
+      scaffoldBackgroundColor: Color(0xFFFAFAFA),
       colorScheme: ColorScheme.fromSwatch(
         accentColor: const Color(0xFF13B9FF),
       ),

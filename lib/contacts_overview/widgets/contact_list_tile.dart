@@ -42,12 +42,10 @@ class _ContactListTileState extends State<ContactListTile> {
         maxLines: 1,
         style: AppTextStyle.textMuted14SemiBold,
       ),
-
       leading: _NameIcon(
           firstName: widget.contact.firstName,
           backgroundColor: FlutterContactsTheme.primaryColor,
           textColor: FlutterContactsTheme.iconNameTextColor),
-    
       trailing: InkWell(
         onTap: () {
           setState(() {

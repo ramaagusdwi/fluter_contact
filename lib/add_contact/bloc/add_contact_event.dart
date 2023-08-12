@@ -60,6 +60,7 @@ final class AddContactWebsiteChanged extends AddContactEvent {
   @override
   List<Object> get props => [website];
 }
+
 final class AddContactSubmitted extends AddContactEvent {
   const AddContactSubmitted();
 }

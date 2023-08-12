@@ -47,15 +47,14 @@ final class AddContactState extends Equatable {
     String? website,
   }) {
     return AddContactState(
-      status: status ?? this.status,
-      firstName: firstName ?? this.firstName,
-      lastName: lastName ?? this.lastName,
-      email: email ?? this.email,
-      phone: phone ?? this.phone,
-      errMessage: errorMessage ?? this.errMessage,
+        status: status ?? this.status,
+        firstName: firstName ?? this.firstName,
+        lastName: lastName ?? this.lastName,
+        email: email ?? this.email,
+        phone: phone ?? this.phone,
+        errMessage: errorMessage ?? this.errMessage,
         work: work ?? this.work,
-        website: website ?? this.website
-    );
+        website: website ?? this.website);
   }
 
   @override

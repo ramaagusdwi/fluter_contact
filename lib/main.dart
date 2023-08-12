@@ -17,8 +17,8 @@ Future<void> main() async {
   runZonedGuarded<Future<void>>(() async {
     WidgetsFlutterBinding.ensureInitialized();
     final contactsApi = LocalStorageContactApi(
-    plugin: await SharedPreferences.getInstance(),
-  );
+      plugin: await SharedPreferences.getInstance(),
+    );
 
     bootstrap(contactsApi: contactsApi);
   }, (error, stack) => log(error.toString(), stackTrace: stack));

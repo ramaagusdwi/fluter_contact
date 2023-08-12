@@ -1,4 +1,3 @@
-
 import 'package:contact_api/src/models/contact_model.dart';
 
 /// {@template Contacts_api}

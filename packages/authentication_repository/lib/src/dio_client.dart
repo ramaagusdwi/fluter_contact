@@ -41,7 +41,7 @@ class DioClient {
       );
 
       print('User Info: ${userData.data}');
-      var map = userData.data as Map<String,dynamic>;
+      var map = userData.data as Map<String, dynamic>;
       token = map['token'];
     } on DioError catch (e) {
       // The request was made and the server responded with a status code
