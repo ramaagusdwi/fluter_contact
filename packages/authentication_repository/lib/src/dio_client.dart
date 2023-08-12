@@ -10,7 +10,7 @@ class DioClient {
   Future<User?> getUser({required String id}) async {
     User? user;
     try {
-      Response userData = await _dio.get(_baseUrl + '/users/$id');
+      Response userData = await _dio.get('$_baseUrl/users/$id');
       print('User Info: ${userData.data}');
       user = User.fromJson(userData.data);
     } on DioError catch (e) {
@@ -36,7 +36,7 @@ class DioClient {
     String? token;
     try {
       Response userData = await _dio.post(
-        _baseUrl + '/login',
+        '$_baseUrl/login',
         data: {'email': email, 'password': password},
       );
 

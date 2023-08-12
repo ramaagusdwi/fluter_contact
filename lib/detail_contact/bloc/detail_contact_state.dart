@@ -3,7 +3,7 @@ part of 'detail_contact_bloc.dart';
 enum DetailContactStatus { initial, loading, success, failure }
 
 final class DetailContactState extends Equatable {
-  DetailContactState({
+  const DetailContactState({
     this.status = DetailContactStatus.initial,
     this.firstName = '',
     this.lastName = '',

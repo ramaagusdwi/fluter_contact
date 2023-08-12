@@ -56,7 +56,7 @@ class DetailContactView extends StatelessWidget {
     final state = context.watch<DetailContactBloc>().state;
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           size: 26,
           color: Colors.white,
         ),
@@ -131,7 +131,7 @@ class DetailContactInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     final state = context.watch<DetailContactBloc>().state;
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -148,7 +148,6 @@ class DetailContactInfo extends StatelessWidget {
 
 class _PhoneCard extends StatelessWidget {
   const _PhoneCard({
-    super.key,
     required this.state,
   });
 
@@ -187,7 +186,6 @@ class _PhoneCard extends StatelessWidget {
 
 class _EmailCard extends StatelessWidget {
   const _EmailCard({
-    super.key,
     required this.state,
   });
 
@@ -221,7 +219,6 @@ class _EmailCard extends StatelessWidget {
 
 class _SendContactCard extends StatelessWidget {
   const _SendContactCard({
-    super.key,
     required this.state,
   });
 

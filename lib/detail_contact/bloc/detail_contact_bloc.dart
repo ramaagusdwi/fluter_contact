@@ -10,7 +10,7 @@ class DetailContactBloc extends Bloc<DetailContactEvent, DetailContactState> {
   DetailContactBloc({
     required ContactsRepository contactsRepository,
   })  : _contactsRepository = contactsRepository,
-        super(DetailContactState()) {
+        super(const DetailContactState()) {
     on<DetailContactRequest>(_onSubscriptionRequested);
   }
 
