@@ -89,7 +89,7 @@ class _NameIcon extends StatelessWidget {
             color: backgroundColor,
             border: Border.all(color: Colors.black, width: 0.5),
           ),
-          padding: EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8.0),
           child:
               Text(firstLetter, style: TextStyle(color: textColor)),
         ),
