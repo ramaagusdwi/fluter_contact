@@ -56,7 +56,6 @@ class AddContactView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final status = context.select((AddContactBloc bloc) => bloc.state.status);
 
     return Scaffold(
