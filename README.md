@@ -1,7 +1,7 @@
 # flutter_contact
 
-###Architecture <br>
+### Architecture <br>
 https://verygood.ventures/blog/very-good-flutter-architecture <br>
 <br>
-###State Management
+### State Management
 https://bloclibrary.dev/#/gettingstarted <br>
