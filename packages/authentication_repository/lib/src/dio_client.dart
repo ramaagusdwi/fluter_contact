@@ -13,7 +13,7 @@ class DioClient {
       Response userData = await _dio.get('$_baseUrl/users/$id');
       print('User Info: ${userData.data}');
       user = User.fromJson(userData.data);
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       // The request was made and the server responded with a status code
       // that falls out of the range of 2xx and is also not 304.
       if (e.response != null) {
