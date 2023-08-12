@@ -56,15 +56,8 @@ class AddContactView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final l10n = context.l10n;
+
     final status = context.select((AddContactBloc bloc) => bloc.state.status);
-    // final isNewTodo = context.select(
-    //   (AddContactBloc bloc) => bloc.state.isNewTodo,
-    // );
-    final theme = Theme.of(context);
-    final floatingActionButtonTheme = theme.floatingActionButtonTheme;
-    final fabBackgroundColor = floatingActionButtonTheme.backgroundColor ??
-        theme.colorScheme.secondary;
 
     return Scaffold(
       appBar: AppBar(
@@ -91,22 +84,6 @@ class AddContactView extends StatelessWidget {
           const SizedBox(width: 12)
         ],
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   tooltip: l10n.AddContactSaveButtonTooltip,
-      //   shape: const ContinuousRectangleBorder(
-      //     borderRadius: BorderRadius.all(Radius.circular(32)),
-      //   ),
-      //   backgroundColor: status.isLoadingOrSuccess
-      //       ? fabBackgroundColor.withOpacity(0.5)
-      //       : fabBackgroundColor,
-      //   onPressed: status.isLoadingOrSuccess
-      //       ? null
-      //       : () =>
-      //           context.read<AddContactBloc>().add(const AddContactSubmitted()),
-      //   child: status.isLoadingOrSuccess
-      //       ? const CupertinoActivityIndicator()
-      //       : const Icon(Icons.check_rounded),
-      // ),
       body: CupertinoScrollbar(
         child: SingleChildScrollView(
           child: Padding(

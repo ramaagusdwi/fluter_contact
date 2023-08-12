@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:authentication_repository/src/dio_client.dart';
-import 'package:authentication_repository/src/models/user.dart';
 import 'package:flutter/foundation.dart';
 
 enum AuthenticationStatus { unknown, authenticated, unauthenticated }

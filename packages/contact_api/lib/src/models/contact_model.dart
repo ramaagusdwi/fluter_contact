@@ -2,7 +2,6 @@ import 'package:contact_api/src/models/json_map.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:contact_api/contact_api.dart';
 import 'package:uuid/uuid.dart';
 
 part 'contact_model.g.dart';

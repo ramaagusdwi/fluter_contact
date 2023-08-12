@@ -27,9 +27,6 @@ class _ContactListTileState extends State<ContactListTile> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final captionColor = theme.textTheme.bodySmall?.color;
-
     return ListTile(
       onTap: widget.onTap,
       title: Text(widget.contact.firstName.toCapitalized(),
