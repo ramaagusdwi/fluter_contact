@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
@@ -17,12 +16,5 @@ void bootstrap({required ContactsApi contactsApi}) {
   Bloc.observer = const AppBlocObserver();
 
   final contactsRepository = ContactsRepository(contactApi: contactsApi);
-
-  // runZonedGuarded(
-  //   () {
-  //     runApp(App(contactsRepository: contactsRepository));
-  //   },
-  //   (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
-  // );
   runApp(App(contactsRepository: contactsRepository));
 }
