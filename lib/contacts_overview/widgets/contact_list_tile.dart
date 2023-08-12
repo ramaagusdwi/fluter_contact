@@ -72,7 +72,7 @@ class _NameIcon extends StatelessWidget {
     this.textColor = Colors.black,
   });
 
-  String get firstLetter => this.firstName.substring(0, 1).toUpperCase();
+  String get firstLetter => firstName.substring(0, 1).toUpperCase();
 
   @override
   Widget build(BuildContext context) {
@@ -86,12 +86,12 @@ class _NameIcon extends StatelessWidget {
           alignment: Alignment.center,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: this.backgroundColor,
+            color: backgroundColor,
             border: Border.all(color: Colors.black, width: 0.5),
           ),
           padding: EdgeInsets.all(8.0),
           child:
-              Text(this.firstLetter, style: TextStyle(color: this.textColor)),
+              Text(firstLetter, style: TextStyle(color: textColor)),
         ),
       ),
     );
