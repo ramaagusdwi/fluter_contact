@@ -7,4 +7,5 @@ https://verygood.ventures/blog/very-good-flutter-architecture <br>
 <br>
 ### State Management
 https://bloclibrary.dev/#/gettingstarted <br>
-![architecture bloc library](https://github.com/ramaagusdwi/fluter_contact/assets/17122961/9625b052-eef9-4f75-a61d-f4ededda5930)
+![2023-08-12_15-48](https://github.com/ramaagusdwi/fluter_contact/assets/17122961/5f3ede4e-a59b-4d0f-9018-e86ac4e72c86)
+
