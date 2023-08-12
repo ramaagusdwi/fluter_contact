@@ -52,7 +52,7 @@ final class AddContactState extends Equatable {
         lastName: lastName ?? this.lastName,
         email: email ?? this.email,
         phone: phone ?? this.phone,
-        errMessage: errorMessage ?? this.errMessage,
+        errMessage: errorMessage ?? errMessage,
         work: work ?? this.work,
         website: website ?? this.website);
   }

@@ -86,11 +86,11 @@ class AddContactView extends StatelessWidget {
       body: CupertinoScrollbar(
         child: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: Column(
               children: [
                 const SizedBox(height: 24),
-                _Photo(),
+                _photo(),
                 const SizedBox(height: 12),
                 const _FirstNameField(),
                 const SizedBox(height: 12),
@@ -111,7 +111,7 @@ class AddContactView extends StatelessWidget {
     );
   }
 
-  SizedBox _Photo() {
+  SizedBox _photo() {
     return SizedBox(
       width: 130,
       height: 130,

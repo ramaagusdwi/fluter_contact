@@ -36,8 +36,8 @@ class TodosOverviewView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Contact', style: AppTextStyle.textWhite18SemiBold),
-        actions: [
-          const Padding(
+        actions: const [
+          Padding(
             padding: EdgeInsets.only(right: 16),
             child: Icon(
               Icons.search,
@@ -130,9 +130,9 @@ class TodosOverviewView extends StatelessWidget {
             AddContactPage.route(),
           );
         },
-        child: const Icon(Icons.add),
         backgroundColor: FlutterContactsTheme.primaryColor,
         foregroundColor: Colors.white,
+        child: const Icon(Icons.add),
       ),
     );
   }
